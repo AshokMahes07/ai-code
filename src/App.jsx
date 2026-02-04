@@ -1,129 +1,184 @@
-const plans = [
+const kpis = [
+  { label: 'Total Employees', value: '482', trend: '+4.2%', note: 'vs last month' },
+  { label: 'Active Projects', value: '36', trend: '+2', note: 'new launches' },
+  { label: 'Payroll Run', value: '$1.82M', trend: '-1.6%', note: 'cost optimized' },
+  { label: 'Compliance Score', value: '96%', trend: '+1.1%', note: 'stable' },
+];
+
+const quickActions = [
+  { title: 'Add new hire', description: 'Start onboarding workflow' },
+  { title: 'Run payroll', description: 'Schedule next cycle' },
+  { title: 'Review approvals', description: '12 items pending' },
+  { title: 'Download reports', description: 'Monthly summaries' },
+];
+
+const activity = [
   {
-    name: 'Starter',
-    price: '$19',
-    description: 'For early-stage teams validating ideas.',
-    features: [
-      'Up to 3 projects',
-      'Unlimited viewers',
-      'Basic analytics',
-      'Community support',
-    ],
-    cta: 'Start free trial',
+    title: 'Benefits enrollment closed',
+    time: '2 hours ago',
+    status: 'Completed',
   },
   {
-    name: 'Growth',
-    price: '$49',
-    description: 'For scaling teams that need deeper insights.',
-    features: [
-      'Unlimited projects',
-      'Advanced analytics',
-      'Custom dashboards',
-      'Priority chat support',
-    ],
-    cta: 'Upgrade to Growth',
-    highlight: true,
+    title: 'Vendor contract renewed',
+    time: 'Yesterday',
+    status: 'In review',
   },
   {
-    name: 'Enterprise',
-    price: 'Custom',
-    description: 'For large organizations with bespoke needs.',
-    features: [
-      'Dedicated success manager',
-      'SSO & advanced security',
-      'SLA-backed uptime',
-      'Custom onboarding',
-    ],
-    cta: 'Talk to sales',
+    title: 'Workforce planning session',
+    time: 'Fri, 9:00 AM',
+    status: 'Scheduled',
   },
 ];
 
-const faqs = [
+const insights = [
   {
-    question: 'Can I switch plans later?',
-    answer:
-      'Absolutely. Upgrade or downgrade at any time and only pay the prorated difference.',
+    title: 'Top departments',
+    value: 'Operations · 38%',
+    detail: 'Engineering · 27% | Sales · 18%',
   },
   {
-    question: 'Do you offer discounts for nonprofits?',
-    answer:
-      'Yes, we offer 30% off for verified nonprofits. Reach out to our support team for details.',
+    title: 'Open positions',
+    value: '14 roles',
+    detail: '4 senior, 6 mid, 4 junior',
   },
   {
-    question: 'What payment methods do you accept?',
-    answer:
-      'We accept all major credit cards, ACH transfers for annual plans, and invoicing for enterprise.',
+    title: 'Retention risk',
+    value: '3.8%',
+    detail: 'Down from 4.5% last quarter',
   },
+];
+
+const compliance = [
+  { name: 'ESI & PF', status: 'Up to date', level: 'ok' },
+  { name: 'Tax filings', status: 'Due in 6 days', level: 'warn' },
+  { name: 'License renewals', status: 'No issues', level: 'info' },
 ];
 
 function App() {
   return (
-    <div className="page">
-      <header className="hero">
-        <div className="hero-content">
-          <p className="eyebrow">Pricing</p>
-          <h1>Flexible plans that grow with your team.</h1>
+    <div className="dashboard">
+      <header className="dashboard-header">
+        <div>
+          <p className="eyebrow">Workforce dashboard</p>
+          <h1>Company overview</h1>
           <p className="subhead">
-            Choose a plan that fits your stage. Upgrade when you need more power, and cancel anytime.
+            All critical metrics are optimized for every screen size. No zooming required.
           </p>
         </div>
-        <div className="hero-card">
-          <p className="hero-card-title">All plans include</p>
-          <ul>
-            <li>99.9% uptime guarantee</li>
-            <li>GDPR & SOC 2 compliance</li>
-            <li>24/7 monitoring</li>
-          </ul>
-          <button className="ghost">Compare all features</button>
+        <div className="header-actions">
+          <div className="range-pill">
+            <span>Jun 1 - Jun 30</span>
+            <button className="ghost">Change</button>
+          </div>
+          <button className="primary">Export report</button>
         </div>
       </header>
 
-      <section className="pricing-grid">
-        {plans.map((plan) => (
-          <article
-            key={plan.name}
-            className={`plan-card${plan.highlight ? ' highlight' : ''}`}
-          >
-            {plan.highlight && <span className="badge">Most popular</span>}
-            <h2>{plan.name}</h2>
-            <p className="plan-description">{plan.description}</p>
-            <div className="price">
-              <span>{plan.price}</span>
-              {plan.price !== 'Custom' && <span className="price-unit">/month</span>}
+      <section className="kpi-grid">
+        {kpis.map((item) => (
+          <article key={item.label} className="kpi-card">
+            <div>
+              <p>{item.label}</p>
+              <h2>{item.value}</h2>
             </div>
-            <ul className="features">
-              {plan.features.map((feature) => (
-                <li key={feature}>{feature}</li>
-              ))}
-            </ul>
-            <button className={plan.highlight ? 'primary' : 'secondary'}>{plan.cta}</button>
+            <div className="kpi-trend">
+              <span>{item.trend}</span>
+              <small>{item.note}</small>
+            </div>
           </article>
         ))}
       </section>
 
-      <section className="faq">
-        <div className="faq-header">
-          <h2>Pricing FAQs</h2>
-          <p>Still have questions? We are here to help.</p>
+      <section className="layout-grid">
+        <div className="panel">
+          <div className="panel-header">
+            <h3>Key activity</h3>
+            <button className="ghost">View all</button>
+          </div>
+          <div className="panel-body">
+            {activity.map((item) => (
+              <div key={item.title} className="activity-row">
+                <div>
+                  <h4>{item.title}</h4>
+                  <p>{item.time}</p>
+                </div>
+                <span className="status-chip">{item.status}</span>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="faq-grid">
-          {faqs.map((item) => (
-            <div key={item.question} className="faq-item">
-              <h3>{item.question}</h3>
-              <p>{item.answer}</p>
-            </div>
-          ))}
-        </div>
-      </section>
 
-      <section className="cta">
-        <div>
-          <h2>Ready to get started?</h2>
-          <p>Launch your next project today with a 14-day free trial.</p>
+        <div className="panel">
+          <div className="panel-header">
+            <h3>Quick actions</h3>
+            <button className="ghost">Customize</button>
+          </div>
+          <div className="quick-grid">
+            {quickActions.map((action) => (
+              <button key={action.title} className="quick-card">
+                <h4>{action.title}</h4>
+                <p>{action.description}</p>
+              </button>
+            ))}
+          </div>
         </div>
-        <div className="cta-actions">
-          <button className="primary">Start free trial</button>
-          <button className="secondary">Book a demo</button>
+
+        <div className="panel wide">
+          <div className="panel-header">
+            <h3>Insights snapshot</h3>
+            <button className="ghost">Open analytics</button>
+          </div>
+          <div className="insight-grid">
+            {insights.map((insight) => (
+              <div key={insight.title} className="insight-card">
+                <p>{insight.title}</p>
+                <h4>{insight.value}</h4>
+                <span>{insight.detail}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="panel">
+          <div className="panel-header">
+            <h3>Compliance</h3>
+            <button className="ghost">See calendar</button>
+          </div>
+          <div className="compliance-list">
+            {compliance.map((item) => (
+              <div key={item.name} className="compliance-row">
+                <div>
+                  <h4>{item.name}</h4>
+                  <p>{item.status}</p>
+                </div>
+                <span className={`pill ${item.level}`}>{item.level}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="panel">
+          <div className="panel-header">
+            <h3>Budget health</h3>
+            <button className="ghost">See details</button>
+          </div>
+          <div className="budget-grid">
+            <div>
+              <p>Allocated</p>
+              <h4>$3.4M</h4>
+              <span className="muted">FY 2024</span>
+            </div>
+            <div>
+              <p>Utilized</p>
+              <h4>$2.6M</h4>
+              <span className="muted">76% used</span>
+            </div>
+            <div>
+              <p>Forecast</p>
+              <h4>$3.1M</h4>
+              <span className="muted">On track</span>
+            </div>
+          </div>
         </div>
       </section>
     </div>

@@ -227,6 +227,172 @@ button.ghost {
   gap: 12px;
 }
 
+.mis-dashboard {
+  background: white;
+  border-radius: 28px;
+  padding: 48px;
+  display: grid;
+  gap: 32px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+}
+
+.mis-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.mis-eyebrow {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: #16a34a;
+  font-size: 0.7rem;
+}
+
+.mis-subhead {
+  color: #475569;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 560px;
+}
+
+.mis-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.mis-highlights span {
+  padding: 10px 16px;
+  background: #f1f5f9;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.mis-panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.mis-panel {
+  background: #f8fafc;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.15);
+  display: grid;
+  gap: 16px;
+}
+
+.mis-panel h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.mis-metrics,
+.mis-employee {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.mis-metrics p,
+.mis-employee p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.mis-metrics strong,
+.mis-employee strong {
+  font-size: 1.4rem;
+  color: #0f172a;
+}
+
+.mis-note {
+  background: white;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.mis-compliance {
+  display: grid;
+  gap: 12px;
+}
+
+.mis-compliance-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: white;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.mis-pill {
+  font-size: 0.75rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.mis-pill.ok {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.mis-pill.warn {
+  background: #fef9c3;
+  color: #a16207;
+}
+
+.mis-pill.risk {
+  background: #ffe4e6;
+  color: #be123c;
+}
+
+.mis-pill.info {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.mis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px;
+}
+
+.mis-card {
+  border-radius: 18px;
+  padding: 18px;
+  background: white;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+  display: grid;
+  gap: 8px;
+}
+
+.mis-card h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.mis-card p {
+  margin: 0;
+  color: #475569;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
 @media (max-width: 720px) {
   .page {
     padding: 32px 6vw 60px;
@@ -238,5 +404,9 @@ button.ghost {
 
   .cta {
     padding: 28px;
+  }
+
+  .mis-dashboard {
+    padding: 32px 24px;
   }
 }
